@@ -35,6 +35,8 @@ jobs:
       - name: Offline tests (no API requests)
         run: python -m unittest discover -s tests -v
       - name: Refresh changed fixtures
+        # A season the API plan does not include must not stop publishing what is already cached.
+        continue-on-error: true
         env:
           APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
           APIFOOTBALL_LEAGUE_ID: ${{ vars.APIFOOTBALL_LEAGUE_ID }}
