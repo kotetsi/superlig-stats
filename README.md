@@ -24,12 +24,8 @@ produce identical bytes and no diff).
 2. **API key.** Create an API-Football account (dashboard.api-football.com) and copy the key.
 3. **Secret** (Settings → Secrets and variables → Actions → *Secrets*): `APIFOOTBALL_KEY` = the key.
    Never put the key in a file, URL, variable or log.
-4. **League id.** On your own computer, once (1 request):
-   ```bash
-   pip install -r requirements.txt
-   APIFOOTBALL_KEY=... python scripts/check_league.py
-   ```
-   It prints every Turkish league with its id and seasons. Use the id of the Süper Lig.
+4. **League id.** Actions → *Find the Süper Lig league id (1 request)* → Run workflow. The run summary lists every
+   Turkish league with its id and seasons; use the id of the Süper Lig. (Locally: `python scripts/check_league.py`.)
 5. **Variables** (same page, *Variables* tab):
    | name | value |
    |---|---|

@@ -1,0 +1,30 @@
+name: Find the Süper Lig league id (1 request)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: super-lig-data
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: List Turkish leagues with their API-Football ids
+        env:
+          APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
+          API_DAILY_LIMIT: '100'
+        run: |
+          if [ -z "$APIFOOTBALL_KEY" ]; then echo '::error::Missing APIFOOTBALL_KEY secret'; exit 1; fi
+          python scripts/check_league.py | tee -a "$GITHUB_STEP_SUMMARY"
