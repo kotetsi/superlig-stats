@@ -1,0 +1,42 @@
+{
+  "fetched_at": "2026-11-15T22:43:37+00:00",
+  "response": [
+    {
+      "country": {
+        "code": "TR",
+        "flag": "https://media.api-sports.io/flags/tr.svg",
+        "name": "Turkey"
+      },
+      "league": {
+        "id": 203,
+        "logo": "https://media.api-sports.io/football/leagues/203.png",
+        "name": "Süper Lig",
+        "type": "League"
+      },
+      "seasons": [
+        {
+          "coverage": {
+            "fixtures": {
+              "events": true,
+              "lineups": true,
+              "statistics_fixtures": true,
+              "statistics_players": true
+            },
+            "injuries": true,
+            "odds": false,
+            "players": true,
+            "predictions": true,
+            "standings": true,
+            "top_assists": true,
+            "top_cards": true,
+            "top_scorers": true
+          },
+          "current": false,
+          "end": "2024-05-19",
+          "start": "2023-08-13",
+          "year": 2023
+        }
+      ]
+    }
+  ]
+}
