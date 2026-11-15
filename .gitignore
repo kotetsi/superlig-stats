@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+public/
+*.tmp
+# derived on every workflow run from data/raw; not committed (keeps git history small)
+data/public/
+data/build/

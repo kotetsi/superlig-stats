@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>90+ İstatistik | Trendyol Süper Lig</title>
+  <meta name="description" content="Trendyol Süper Lig için derin takım, hakem ve maç istatistikleri. Canlı skor yok; veriye dayalı analiz var.">
+  <meta name="robots" content="index,follow"><meta name="theme-color" content="#071b2d">
+  <!--CANONICAL-->
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json" id="site-schema">{"@context":"https://schema.org","@type":"WebSite","name":"90+ İstatistik","inLanguage":"tr-TR","url":""}</script>
+</head>
+<body>
+<header class="top"><a class="brand" href="./"><span class="brand-mark">90+</span><span>İSTATİSTİK<small>TRENDYOL SÜPER LİG</small></span></a><button id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false">☰</button><nav id="main-nav"><a href="#puan-durumu">Puan durumu</a><a href="#iddaa">İddaa verileri</a><a href="#hakemler">Hakemler</a><a href="#oyuncular">Oyuncular</a><a href="lejyonerler/" id="nav-legion" hidden>Lejyonerler</a><a href="#maclar">Maçlar</a><a href="#h2h">H2H</a><a href="#model">Tahmin modeli</a></nav><label class="season-select">Sezon <select id="season-select" aria-label="Sezon"></select></label></header>
+<main>
+<section class="hero"><div class="eyebrow"><span class="live-dot"></span> CANLI SKOR YOK · DERİN İSTATİSTİK VAR</div><h1>Maçın ötesini<br><em>gör.</em></h1><p>Trendyol Süper Lig için takım, hakem ve karşılaşma analizleri. Veriler API-Football kaynaklıdır.</p><div class="hero-meta"><span id="updated-at">Veri tarihi: —</span><span>Yalnızca API-Football v3</span></div></section>
+<div id="notice" class="notice" role="status" hidden></div>
+<section id="puan-durumu" class="panel"><div class="section-head"><div><span class="eyebrow">SEZON ÖZETİ</span><h2>Puan durumu</h2></div><div class="filters"><label>Görünüm <select id="table-split"><option value="table">Genel</option><option value="home">İç saha</option><option value="away">Deplasman</option></select></label><label>Ara <input id="team-search" type="search" placeholder="Takım adı"></label></div></div><div class="table-wrap"><table id="standings"><thead><tr><th>#</th><th>Takım</th><th>O</th><th>G</th><th>B</th><th>M</th><th>AG</th><th>YG</th><th>AV</th><th>P</th><th>Form</th></tr></thead><tbody></tbody></table></div><p class="muted" id="standings-note"></p></section>
+<section class="panel"><div class="section-head"><div><span class="eyebrow">SEZON TRENDİ</span><h2>Tur bazında sıralama</h2></div><label>Takım <select id="trend-team"></select></label></div><div id="position-chart" class="chart-wrap"><p class="muted">Sıralama grafiği gerçek sezon verisi yüklendiğinde oluşturulur.</p></div></section>
+<section id="iddaa" class="panel"><div class="section-head"><div><span class="eyebrow">MAÇ PROFİLİ</span><h2>İddaa istatistikleri</h2></div></div>
+<div class="filters market-filters"><label>Pazar <select id="mk-market"><option value="goals">Alt/Üst gol</option><option value="btts">Karşılıklı gol</option><option value="htft">İY/MS</option><option value="corners">Korner</option><option value="cards">Kart</option><option value="first">İlk gol</option><option value="minutes">Gol dakikaları</option></select></label><label>Maçlar <select id="mk-split"><option value="all">Tümü</option><option value="home">İç saha</option><option value="away">Deplasman</option></select></label><label id="mk-line-wrap">Barem <select id="mk-line"></select></label><label id="mk-tline-wrap">Takım baremi <select id="mk-tline"></select></label></div>
+<p class="muted" id="mk-note"></p><div class="table-wrap"><table id="betting" class="sortable"><thead></thead><tbody></tbody></table></div><p class="muted">Oran değil, gerçekleşme sıklığı. <span class="low-sample-key">Soluk</span> hücreler az maçtan (5'ten az) hesaplanmıştır. Başlığa tıklayarak sıralayın.</p></section>
+<section id="hakemler" class="panel"><div class="section-head"><div><span class="eyebrow">ÖNE ÇIKAN VERİ</span><h2>Hakem istatistikleri</h2></div><div class="filters"><label>Kapsam <select id="ref-scope"><option value="season">Seçili sezon</option><option value="all">Tüm sezonlar</option></select></label><label>En az maç <select id="ref-min"><option value="1">1</option><option value="3" selected>3</option><option value="5">5</option><option value="10">10</option></select></label><label>Ara <input id="ref-search" type="search" placeholder="Hakem adı"></label></div></div><p class="muted">İsimler yalnızca büyük/küçük harf, Türkçe karakter ve noktalama farkı varsa birleştirilir. Kart ve penaltı oranları yalnızca olay verisi olan maçlardan hesaplanır.</p><div class="table-wrap"><table id="referees" class="sortable"><thead></thead><tbody></tbody></table></div></section>
+<section id="oyuncular" class="panel"><div class="section-head"><div><span class="eyebrow">OYUNCULAR</span><h2>Oyuncu istatistikleri</h2></div><div class="filters"><label>Takım <select id="pl-team"><option value="">Tümü</option></select></label><label>En az dakika <select id="pl-min"><option value="0">0</option><option value="270" selected>270</option><option value="900">900</option></select></label><label>Ara <input id="pl-search" type="search" placeholder="Oyuncu adı"></label></div></div><p class="muted" id="pl-note"></p><div class="table-wrap"><table id="players" class="sortable"><thead></thead><tbody></tbody></table></div></section>
+<section id="maclar" class="panel"><div class="section-head"><div><span class="eyebrow">FİKSTÜR VE SONUÇLAR</span><h2>Maçlar</h2></div><label>Takım <input id="match-search" type="search" placeholder="Takım adı"></label></div><div id="matches" class="match-list"></div></section>
+<section id="h2h" class="panel"><div class="section-head"><div><span class="eyebrow">KARŞILAŞTIRMA</span><h2>İkili rekabet (tüm sezonlar)</h2></div><div class="filters"><label>Takım 1 <select id="h2h-home"></select></label><label>Takım 2 <select id="h2h-away"></select></label></div></div><div id="h2h-result" class="match-list"><p class="muted">İki takım seçin.</p></div></section>
+<section id="model" class="panel model-panel"><div><span class="eyebrow">OLASILIK MODELİ</span><h2>Dixon–Coles tahminleri</h2><p class="muted">Son beş sezondaki maçlardan hücum/savunma gücü, ev sahibi avantajı ve düşük skorlu maç düzeltmesiyle hesaplanır. Olasılık tahminidir; kesin sonuç değildir.</p></div><div id="model-summary" class="model-summary">Model, yeterli gerçek maç verisi yüklendiğinde gösterilir.</div><div id="predictions" class="prediction-grid"></div></section>
+<section class="panel" id="metodoloji"><div class="section-head"><div><span class="eyebrow">ŞEFFAFLIK</span><h2>Kaynak ve metodoloji</h2></div></div><p>Tek veri kaynağı API-Football (api-sports.io), v3’tür. Canlı skor akışı, scraping veya başka istatistik sitelerinden alınan veriler kullanılmaz. Kaynakta bulunmayan alanlar tahminle doldurulmaz.</p><p class="muted" id="coverage"></p></section>
+</main><footer><span>90+ İstatistik</span><span>Trendyol Süper Lig · Bağımsız istatistik çalışması</span><span>Veri kaynağı: API-Football</span></footer>
+<script src="assets/app.js" defer></script>
+</body></html>
+
+
+
+
+
+

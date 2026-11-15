@@ -1,0 +1,56 @@
+name: Initial five-season data fill
+
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: 'Comma-separated season start years (2026 = 2026–27)'
+        required: true
+        default: '2022,2023,2024,2025,2026'
+        type: string
+
+permissions:
+  contents: write
+
+# Same group as the refresh workflow: the two never run at the same time,
+# so they share one request ledger and never race on git push.
+concurrency:
+  group: super-lig-data
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Offline tests (no API requests)
+        run: python -m unittest discover -s tests -v
+      - name: Fetch missing historical data (max 100 requests per UTC day)
+        env:
+          APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
+          APIFOOTBALL_LEAGUE_ID: ${{ vars.APIFOOTBALL_LEAGUE_ID }}
+          API_DAILY_LIMIT: '100'
+          SEASONS: ${{ inputs.seasons }}
+        run: |
+          if [ -z "$APIFOOTBALL_KEY" ]; then echo '::error::Missing APIFOOTBALL_KEY secret'; exit 1; fi
+          if [ -z "$APIFOOTBALL_LEAGUE_ID" ]; then echo '::error::Missing APIFOOTBALL_LEAGUE_ID repository variable'; exit 1; fi
+          python scripts/backfill.py --seasons "$SEASONS"
+      - name: Build season JSON from cache
+        run: python scripts/rebuild_data.py --allow-empty
+      - name: Save cache and progress
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data
+          if ! git diff --cached --quiet; then
+            git commit -m 'Save Süper Lig historical data progress'
+            git pull --rebase --autostash
+            git push
+          fi
